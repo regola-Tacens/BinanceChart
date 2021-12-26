@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { getData } from './api';
+import { CovidList } from './components/CovidList';
 import { ToDoList } from './components/ToDoList';
 import { UpdateItem } from './components/UpdateItem';
 import { casesOfCovids } from './state/atoms';
@@ -26,14 +27,15 @@ function App() {
 
   return (
     <div className="App">
-      {allCases.length > 0 && allCases.map((entry, index) => {
+      <CovidList />
+      {/* {allCases.length > 0 && allCases.map((entry, index) => {
         // eslint-disable-next-line no-lone-blocks
         { while(index<20)
           return(
         <div key={index}>{index} date: {entry.date} , number of cases: {entry.newCases}</div>   
           )
         }
-      }) }
+      }) } */}
       {/* <ToDoList />
       <UpdateItem /> */}
     </div>

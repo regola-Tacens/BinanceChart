@@ -14,11 +14,11 @@ export const UpdateItem = () => {
 
   getId()
 
-  const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>):void => {
     setInputValue(event.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = ():void => {
     setItem((oldToDoList) => [...oldToDoList, {id: getId(), text: inputValue, isComplete: true}])
   }
 
