@@ -7,13 +7,13 @@ const Actions = () => {
   const [apiLimit, setApiLimit] = useRecoilState<Limit>(limit)
   console.log(apiLimit)
   const [apiCoin, setApiCoin] = useRecoilState<Symbol>(symbol)
+  console.log(apiCoin)
 
   const handleHourChange = (actionLimit:Limit) => {
     setApiLimit(actionLimit)
   }
 
   const handleCoinChange = (coin:Symbol) => {
-    console.log(coin)
     setApiCoin(coin)
   }
   return (
