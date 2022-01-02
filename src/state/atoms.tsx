@@ -8,7 +8,7 @@ export const currencies = atom<BinanceCurrency[][]>({
 
 export const limit = atom<Limit>({
   key: 'apiLimit',
-  default: 300
+  default: 60
 })
 export const symbol = atom<Symbol>({
   key: 'apiSymbol',

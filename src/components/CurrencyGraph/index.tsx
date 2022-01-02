@@ -41,6 +41,16 @@ const CurrencyGraph = () => {
 
   const options = {
     responsive: true,
+    scales: {
+        y: {
+            ticks: {
+                // Include a dollar sign in the ticks
+                callback: function(value:any, index:any, values:any) {
+                    return '$' + value;
+                }
+            }
+        }
+    },
     plugins: {
       legend: {
         position: 'top' as const,
@@ -56,7 +66,7 @@ const CurrencyGraph = () => {
     labels: hours,
     datasets: [
       {
-        label: 'Binance currency',
+        label: 'currency value in $',
         data : priceLabel,
         tension:0.5,
         pointStyle: 'circle',

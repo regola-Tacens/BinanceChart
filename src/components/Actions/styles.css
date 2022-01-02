@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.btn-container > div {
+.btn {
   max-width:150px;
   background-color: rgb(104, 195, 255);
   margin: 1em;
@@ -11,11 +11,28 @@
   cursor: pointer;
 }
 
-.btn-container > div:hover {
+.btn:hover {
   background-color: rgb(61, 178, 255);
+}
+.btn-container_btn {
+  margin: 0.5rem 1rem;
+  border:1px solid black;
+  border-radius:10px;
+  padding:0rem 1rem;
+}
+
+.btn-container_btn:hover{
+  background-color: black
 }
 
 .currencyBtn {
+  height: 25px;
   background-color: black;
   color: white;
+}
+ 
+.currencyIcon {
+  height: 25px;
+  margin:0.5em;
+  cursor: pointer;
 }

@@ -19,15 +19,23 @@ const Actions = () => {
   return (
     <>
       <div className="btn-container">
-          <div onClick={()=>handleHourChange(60)}>Last Hour</div>
-          <div onClick={()=>handleHourChange(300)}>Last 5 hours</div>
-          <div onClick={()=>handleHourChange(600)}>Last 10 Hours</div>
+          <div className="btn" onClick={()=>handleHourChange(60)}>Last Hour</div>
+          <div className="btn" onClick={()=>handleHourChange(300)}>Last 5 hours</div>
+          <div className="btn" onClick={()=>handleHourChange(600)}>Last 10 Hours</div>
       </div>
       <div className="btn-container">
-          <div className="currencyBtn" onClick={()=>handleCoinChange("BTCUSDT")}>Bitcoin</div>
-          <div className="currencyBtn" onClick={()=>handleCoinChange('AVAXUSDT')}>Avax</div>
-          <div className="currencyBtn" onClick={()=>handleCoinChange('ETHUSDT')}>Ethereum</div>
-          <div className="currencyBtn" onClick={()=>handleCoinChange('SOLUSDT')}>Solana</div>
+          <div className="btn-container_btn" onClick={()=>handleCoinChange("BTCUSDT")}>
+            <img className="currencyIcon" src="/bitcoin.svg" alt="svg button" />
+          </div>
+          <div className="btn-container_btn" onClick={()=>handleCoinChange('AVAXUSDT')}>
+           <img className="currencyIcon" src="/avax.svg" alt="svg button" />
+          </div>
+          <div className="btn-container_btn" onClick={()=>handleCoinChange('ETHUSDT')}>
+           <img className="currencyIcon" src="/ethereum.svg" alt="svg button" />
+          </div>
+          <div className="btn-container_btn" onClick={()=>handleCoinChange('SOLUSDT')}>
+           <img className="currencyIcon" src="/solana.svg" alt="svg button" />
+          </div>
       </div>
 
     </>
