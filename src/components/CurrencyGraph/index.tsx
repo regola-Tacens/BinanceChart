@@ -65,7 +65,7 @@ const CurrencyGraph = () => {
     ]
   };
   return (
-    <div>
+    <div className="graph">
      <Line options={options} data={data} />
      <Actions />
     </div>
