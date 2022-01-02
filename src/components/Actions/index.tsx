@@ -5,6 +5,7 @@ import './styles.css'
 
 const Actions = () => {
   const [apiLimit, setApiLimit] = useRecoilState<Limit>(limit)
+  console.log(apiLimit)
 
   const handleHourChange = (actionLimit:Limit) => {
     console.log(actionLimit)
