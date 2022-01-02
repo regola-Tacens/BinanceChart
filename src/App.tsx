@@ -12,7 +12,7 @@ function App() {
      getHistoricalSpotCandleStick('BTCUSDT','1m', apiLimit,'').then((response)=>{
       setCurrenciesAToms(response)
       })
-  },[apiLimit])
+  },[apiLimit,setCurrenciesAToms])
 
   return (
     <div className="App">
