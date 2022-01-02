@@ -1,0 +1,15 @@
+.btn-container{
+  display: flex;
+}
+
+.btn-container > div {
+  background-color: rgb(104, 195, 255);
+  margin: 1em;
+  padding:0.25em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.btn-container > div:hover {
+  background-color: rgb(61, 178, 255);
+}
