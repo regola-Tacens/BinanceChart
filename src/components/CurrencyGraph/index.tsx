@@ -1,5 +1,6 @@
 import { useRecoilValue } from "recoil"
 import { currencies, symbol } from "../../state/atoms"
+import moment from 'moment';
 
 import {
   Chart as ChartJS,
@@ -27,11 +28,15 @@ ChartJS.register(
 const CurrencyGraph = () => {
   const apiSymbol = useRecoilValue(symbol)
   const currencyInfos = useRecoilValue(currencies)
+
+  // computing price array for the Y axis
   const prices = currencyInfos.map((item) => item[4])
   const priceLabel = prices.map(price => Number(price))
-  const time = currencyInfos.map((item) => item[6])
 
-  let labels = time.map((t) => (Number(t)/100000000).toFixed(0).toString())
+  // computing hours array for the X axis
+  const time = currencyInfos.map((item) => item[6])
+  let hours = time.map(time => moment.unix(Number(time)/1000).format("hh A"))
+ 
   ChartJS.defaults.scale.grid.display = false;
 
   const options = {
@@ -48,12 +53,12 @@ const CurrencyGraph = () => {
   };
 
   const data = {
-    labels,
+    labels: hours,
     datasets: [
       {
         label: 'Binance currency',
         data : priceLabel,
-        // tension:0.5,
+        tension:0.5,
         pointStyle: 'circle',
         pointRadius:1,
         pointBorderWidth:0,

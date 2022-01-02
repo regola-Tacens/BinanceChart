@@ -1,11 +1,3 @@
-
-// export type RequestConfig = {
-//   symbol: string,
-//   interval: string,
-//   limit: number,
-//   startTime: string
-// }
-
 export type Symbol = string
 export type Interval = string
 
