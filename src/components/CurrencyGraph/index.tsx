@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil"
-import { currencies } from "../../state/atoms"
+import { currencies, symbol } from "../../state/atoms"
 
 import {
   Chart as ChartJS,
@@ -25,6 +25,7 @@ ChartJS.register(
 );
 
 const CurrencyGraph = () => {
+  const apiSymbol = useRecoilValue(symbol)
   const currencyInfos = useRecoilValue(currencies)
   const prices = currencyInfos.map((item) => item[4])
   const priceLabel = prices.map(price => Number(price))
@@ -41,7 +42,7 @@ const CurrencyGraph = () => {
       },
       title: {
         display: true,
-        text: 'bitcoin',
+        text: apiSymbol,
       },
     },
   };

@@ -2,17 +2,18 @@ import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { getHistoricalSpotCandleStick } from './api/binanceAPI';
 import CurrencyGraph from './components/CurrencyGraph';
-import { currencies, limit } from './state/atoms';
+import { currencies, limit, symbol } from './state/atoms';
 
 function App() {
   const [ currenciesAtoms, setCurrenciesAToms] = useRecoilState(currencies)
   const apiLimit = useRecoilValue(limit)
+  const apiSymbol = useRecoilValue(symbol)
 
   useEffect(()=> {
-     getHistoricalSpotCandleStick('BTCUSDT','1m', apiLimit,'').then((response)=>{
+     getHistoricalSpotCandleStick(apiSymbol,'1m', apiLimit,'').then((response)=>{
       setCurrenciesAToms(response)
       })
-  },[apiLimit,setCurrenciesAToms])
+  },[apiLimit, apiSymbol,setCurrenciesAToms])
 
   return (
     <div className="App">

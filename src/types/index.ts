@@ -6,12 +6,9 @@
 //   startTime: string
 // }
 
-export type Symbol = {
-  symbol: string
-}
-export type Interval = {
-  interval: string
-}
+export type Symbol = string
+export type Interval = string
+
 export type Limit = number
 
 export type StartTime = {
