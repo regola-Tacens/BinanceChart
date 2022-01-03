@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useRecoilValue } from "recoil"
 import { currencies, symbol } from "../../state/atoms"
 import moment from 'moment';
