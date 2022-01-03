@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useRecoilValue } from "recoil"
 import { currencies, symbol } from "../../state/atoms"
 import moment from 'moment';
@@ -14,6 +15,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Actions from "../Actions";
+import { datatype } from "faker/locale/zh_TW";
 
 ChartJS.register(
   CategoryScale,
@@ -26,6 +28,9 @@ ChartJS.register(
 );
 
 const CurrencyGraph = () => {
+  const canvasRef = useRef()
+
+  //getting graph numeric infos from the Recoil store
   const apiSymbol = useRecoilValue(symbol)
   const currencyInfos = useRecoilValue(currencies)
 
@@ -37,8 +42,8 @@ const CurrencyGraph = () => {
   const time = currencyInfos.map((item) => item[6])
   let hours = time.map(time => moment.unix(Number(time)/1000).format("hh A"))
  
+  // not displaying the grid by default
   ChartJS.defaults.scale.grid.display = false;
-
 
   const options = {
     responsive: true,
@@ -63,34 +68,43 @@ const CurrencyGraph = () => {
     },
   };
 
-  
-  const data = (canvas: { getContext: (arg0: string) => any; }) => {
-    const ctx = canvas.getContext("2d");
-    const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+  // type dataType = {
+  //   labels:[],
+  //   datasets: []
+  // }
+
+//using canvas.getContext to create a gradient 
+const data = (canvas: HTMLCanvasElement) => {
+  const ctx = canvas.getContext("2d");
+  let gradient
+  if (ctx !==null) gradient = ctx.createLinearGradient(0, 0, 0, 200);
+  if (gradient ){
     gradient.addColorStop(0, 'rgba(250,174,50,1)');   
     gradient.addColorStop(1, 'rgba(250,174,50,0)');
-
-    const result = {
-      labels: hours,
-      datasets: [
-        {
-          label: 'currency value in $',
-          data : priceLabel,
-          tension:0.5,
-          pointStyle: 'circle',
-          pointRadius:1,
-          pointBorderWidth:0,
-          pointBorderColor:'black',
-          borderWidth:2,
-          backgroundColor: 'black',
-          fill:true,
-          borderColor: gradient,
-          
-        },
-      ]
-    }
-    return result
   }
+
+  const result = {
+    labels: hours,
+    datasets: [
+      {
+        label: 'currency value in $',
+        data : priceLabel,
+        tension:0.5,
+        pointStyle: 'circle',
+        pointRadius:1,
+        pointBorderWidth:0,
+        pointBorderColor:'black',
+        borderWidth:2,
+        backgroundColor: 'black',
+        fill:true,
+        borderColor: gradient,
+        
+      },
+    ]
+  }
+  return result
+}
+
 
   // const data = {
   //   labels: hours,
@@ -112,7 +126,7 @@ const CurrencyGraph = () => {
   //   ]
   // };
   return (
-    <div className="graph">  
+    <div className="graph" >  
      <Line options={options} data={data} />
      <Actions />
     </div>
