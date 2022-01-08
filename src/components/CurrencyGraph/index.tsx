@@ -1,8 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useRecoilValue } from "recoil"
-import { currencies, symbol } from "../../state/atoms"
+import { currencies, symbol, limit } from "../../state/atoms"
+import faker from 'faker';
 import moment from 'moment';
-
+import type { ChartData, ChartArea } from 'chart.js';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,9 +14,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Chart, Line } from 'react-chartjs-2';
 import Actions from "../Actions";
-import { datatype } from "faker/locale/zh_TW";
 
 ChartJS.register(
   CategoryScale,
@@ -26,13 +26,29 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
+const colors = [
+  'red',
+  'orange',
+  'yellow',
+  'lime',
+  'green',
+  'teal',
+  'blue',
+  'purple',
+];
 const CurrencyGraph = () => {
-  const canvasRef = useRef()
+  const chartRef = useRef<ChartJS>(null);
+
+  const [chartData, setChartData] = useState<ChartData<'bar'>>({
+    datasets: [],
+  });
 
   //getting graph numeric infos from the Recoil store
   const apiSymbol = useRecoilValue(symbol)
   const currencyInfos = useRecoilValue(currencies)
+
+  //getting graph limit to udpate render
+  const apiLimit = useRecoilValue(limit)
 
   // computing price array for the Y axis
   const prices = currencyInfos.map((item) => item[4])
@@ -43,7 +59,23 @@ const CurrencyGraph = () => {
   let hours = time.map(time => moment.unix(Number(time)/1000).format("hh A"))
  
   // not displaying the grid by default
-  ChartJS.defaults.scale.grid.display = false;
+  // ChartJS.defaults.scale.grid.display = false;
+
+  // function to create gradient
+  function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
+    const colorStart = 'red';
+    // const colorStart = faker.random.arrayElement(colors);
+    const colorMid = 'orange'
+    const colorEnd = 'blue'
+  
+    const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
+  
+    gradient.addColorStop(0, colorStart);
+    gradient.addColorStop(0.5, colorMid);
+    gradient.addColorStop(1, colorEnd);
+  
+    return gradient;
+  }
 
   const options = {
     responsive: true,
@@ -68,22 +100,7 @@ const CurrencyGraph = () => {
     },
   };
 
-  // type dataType = {
-  //   labels:[],
-  //   datasets: []
-  // }
-
-//using canvas.getContext to create a gradient 
-const data = (canvas: HTMLCanvasElement) => {
-  const ctx = canvas.getContext("2d");
-  let gradient
-  if (ctx !==null) gradient = ctx.createLinearGradient(0, 0, 0, 200);
-  if (gradient ){
-    gradient.addColorStop(0, 'rgba(250,174,50,1)');   
-    gradient.addColorStop(1, 'rgba(250,174,50,0)');
-  }
-
-  const result = {
+  const data = {
     labels: hours,
     datasets: [
       {
@@ -97,37 +114,30 @@ const data = (canvas: HTMLCanvasElement) => {
         borderWidth:2,
         backgroundColor: 'black',
         fill:true,
-        borderColor: gradient,
-        
       },
     ]
-  }
-  return result
-}
+  };
 
+  useEffect(() => {
+    const chart = chartRef.current;
 
-  // const data = {
-  //   labels: hours,
-  //   datasets: [
-  //     {
-  //       label: 'currency value in $',
-  //       data : priceLabel,
-  //       tension:0.5,
-  //       pointStyle: 'circle',
-  //       pointRadius:1,
-  //       pointBorderWidth:0,
-  //       pointBorderColor:'black',
-  //       borderWidth:2,
-  //       backgroundColor: 'black',
-  //       fill:true,
-  //       borderColor: 'red',
-        
-  //     },
-  //   ]
-  // };
+    if (!chart) {
+      return;
+    }
+    const chartData = {
+      ...data,
+      datasets: data.datasets.map(dataset => ({
+        ...dataset,
+        borderColor: createGradient(chart.ctx, chart.chartArea),
+      })),
+    };
+    setChartData(chartData);
+  },[apiSymbol,apiLimit])
+
   return (
     <div className="graph" >  
-     <Line options={options} data={data} />
+    <Chart ref={chartRef} type='line' options={options} data={chartData} />;
+     {/* <Line options={options} data={data} /> */}
      <Actions />
     </div>
   )
