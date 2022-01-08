@@ -65,53 +65,53 @@ const CurrencyGraph = () => {
   };
 
   
-  const data = (canvas: { getContext: (arg0: string) => any; }) => {
-    const ctx = canvas.getContext("2d");
-    const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-    gradient.addColorStop(0, 'rgba(250,174,50,1)');   
-    gradient.addColorStop(1, 'rgba(250,174,50,0)');
+  // const data = (canvas: { getContext: (arg0: string) => any; }) => {
+  //   const ctx = canvas.getContext("2d");
+  //   const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+  //   gradient.addColorStop(0, 'rgba(250,174,50,1)');   
+  //   gradient.addColorStop(1, 'rgba(250,174,50,0)');
 
-    const result = {
-      labels: hours,
-      datasets: [
-        {
-          label: 'currency value in $',
-          data : priceLabel,
-          tension:0.5,
-          pointStyle: 'circle',
-          pointRadius:1,
-          pointBorderWidth:0,
-          pointBorderColor:'black',
-          borderWidth:2,
-          backgroundColor: 'black',
-          fill:true,
-          borderColor: gradient,
+  //   const result = {
+  //     labels: hours,
+  //     datasets: [
+  //       {
+  //         label: 'currency value in $',
+  //         data : priceLabel,
+  //         tension:0.5,
+  //         pointStyle: 'circle',
+  //         pointRadius:1,
+  //         pointBorderWidth:0,
+  //         pointBorderColor:'black',
+  //         borderWidth:2,
+  //         backgroundColor: 'black',
+  //         fill:true,
+  //         borderColor: gradient,
           
-        },
-      ]
-    }
-    return result
-  }
+  //       },
+  //     ]
+  //   }
+  //   return result
+  // }
 
-  // const data = {
-  //   labels: hours,
-  //   datasets: [
-  //     {
-  //       label: 'currency value in $',
-  //       data : priceLabel,
-  //       tension:0.5,
-  //       pointStyle: 'circle',
-  //       pointRadius:1,
-  //       pointBorderWidth:0,
-  //       pointBorderColor:'black',
-  //       borderWidth:2,
-  //       backgroundColor: 'black',
-  //       fill:true,
-  //       borderColor: 'red',
+  const data = {
+    labels: hours,
+    datasets: [
+      {
+        label: 'currency value in $',
+        data : priceLabel,
+        tension:0.5,
+        pointStyle: 'circle',
+        pointRadius:1,
+        pointBorderWidth:0,
+        pointBorderColor:'black',
+        borderWidth:2,
+        backgroundColor: 'black',
+        fill:true,
+        borderColor: 'red',
         
-  //     },
-  //   ]
-  // };
+      },
+    ]
+  };
   return (
     <div className="graph">  
      <Line options={options} data={data} />
