@@ -13,7 +13,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Chart, Line } from 'react-chartjs-2';
+import { Chart} from 'react-chartjs-2';
 import Actions from "../Actions";
 
 ChartJS.register(
@@ -25,16 +25,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const colors = [
-  'red',
-  'orange',
-  'yellow',
-  'lime',
-  'green',
-  'teal',
-  'blue',
-  'purple',
-];
+
 const CurrencyGraph = () => {
   const chartRef = useRef<ChartJS>(null);
 
@@ -132,6 +123,7 @@ const CurrencyGraph = () => {
     };
 
     setChartData(chartData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[apiSymbol, currencyInfos])
 
   return (

@@ -4,8 +4,8 @@ import { Limit,Symbol } from '../../types'
 import './styles.css'
 
 const Actions = () => {
-  const [apiLimit, setApiLimit] = useRecoilState<Limit>(limit)
-  const [apiCoin, setApiCoin] = useRecoilState<Symbol>(symbol)
+  const [, setApiLimit] = useRecoilState<Limit>(limit)
+  const [, setApiCoin] = useRecoilState<Symbol>(symbol)
 
   const handleHourChange = (actionLimit:Limit) => {
     setApiLimit(actionLimit)
