@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { useRecoilValue } from "recoil"
 import { currencies, symbol, limit } from "../../state/atoms"
-import faker from 'faker';
 import moment from 'moment';
 import type { ChartData, ChartArea } from 'chart.js';
 import {
@@ -131,12 +130,13 @@ const CurrencyGraph = () => {
         borderColor: createGradient(chart.ctx, chart.chartArea),
       })),
     };
+
     setChartData(chartData);
-  },[apiSymbol,apiLimit])
+  },[apiSymbol, currencyInfos])
 
   return (
     <div className="graph" >  
-    <Chart ref={chartRef} type='line' options={options} data={chartData} />;
+    <Chart ref={chartRef} type='line' options={options} data={chartData} />
      {/* <Line options={options} data={data} /> */}
      <Actions />
     </div>
