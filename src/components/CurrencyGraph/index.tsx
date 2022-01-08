@@ -3,28 +3,30 @@ import { useRecoilValue } from "recoil"
 import { currencies, symbol } from "../../state/atoms"
 import moment from 'moment';
 import type { ChartData, ChartArea } from 'chart.js';
+import { Chart} from 'react-chartjs-2';
+import Actions from "../Actions";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
+  LineController,
   LineElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Chart} from 'react-chartjs-2';
-import Actions from "../Actions";
-
-ChartJS.register(
+ChartJS.register (
   CategoryScale,
   LinearScale,
   PointElement,
+  LineController,
   LineElement,
   Title,
   Tooltip,
-  Legend
-);
+  Legend,
+)
+
 
 const CurrencyGraph = () => {
   const chartRef = useRef<ChartJS>(null);
