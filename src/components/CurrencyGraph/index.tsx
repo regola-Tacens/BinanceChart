@@ -37,9 +37,6 @@ const CurrencyGraph = () => {
   const apiSymbol = useRecoilValue(symbol)
   const currencyInfos = useRecoilValue(currencies)
 
-  //getting graph limit to udpate render
-  const apiLimit = useRecoilValue(limit)
-
   // computing price array for the Y axis
   const prices = currencyInfos.map((item) => item[4])
   const priceLabel = prices.map(price => Number(price))
