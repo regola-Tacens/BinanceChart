@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { useRecoilValue } from "recoil"
-import { currencies, symbol, limit } from "../../state/atoms"
+import { currencies, symbol } from "../../state/atoms"
 import moment from 'moment';
 import type { ChartData, ChartArea } from 'chart.js';
 import {
