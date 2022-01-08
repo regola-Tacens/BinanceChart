@@ -29,7 +29,7 @@ ChartJS.register(
 const CurrencyGraph = () => {
   const chartRef = useRef<ChartJS>(null);
 
-  const [chartData, setChartData] = useState<ChartData<'bar'>>({
+  const [chartData, setChartData] = useState<ChartData<'line'>>({
     datasets: [],
   });
 
@@ -126,7 +126,6 @@ const CurrencyGraph = () => {
   return (
     <div className="graph" >  
     <Chart ref={chartRef} type='line' options={options} data={chartData} />
-     {/* <Line options={options} data={data} /> */}
      <Actions />
     </div>
   )
