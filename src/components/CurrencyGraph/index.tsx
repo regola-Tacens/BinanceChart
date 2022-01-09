@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil"
 import { currencies, symbol } from "../../state/atoms"
 import moment from 'moment';
 import type { ChartData, ChartArea } from 'chart.js';
-import { Chart} from 'react-chartjs-2';
+import { Chart } from 'react-chartjs-2';
 import Actions from "../Actions";
 import {
   Chart as ChartJS,
@@ -22,6 +22,7 @@ ChartJS.register (
   PointElement,
   LineController,
   LineElement,
+  Tooltip,
   Title,
   Tooltip,
   Legend,
@@ -67,7 +68,12 @@ const CurrencyGraph = () => {
   }
 
   const options = {
+    interaction: {
+      intersect: false,
+      mode: 'index' as const,
+    },
     responsive: true,
+    stacked: false,
     scales: {
         y: {
             ticks: {
@@ -89,6 +95,32 @@ const CurrencyGraph = () => {
     },
   };
 
+  // const plugins = [
+  //    {
+  //     afterDraw: (chart: { tooltip?: any; scales?: any; ctx?: any; }) => {
+  //       // eslint-disable-next-line no-underscore-dangle
+  //       if (chart.tooltip._active && chart.tooltip._active.length) {
+  //         // find coordinates of tooltip
+  //         const activePoint = chart.tooltip._active[0];
+  //         const { ctx } = chart;
+  //         const { x } = activePoint.element;
+  //         const topY = chart.scales.y.top;
+  //         const bottomY = chart.scales.y.bottom;
+
+  //         // draw vertical line
+  //         ctx.save();
+  //         ctx.beginPath();
+  //         ctx.moveTo(x, topY);
+  //         ctx.lineTo(x, bottomY);
+  //         ctx.lineWidth = 1;
+  //         ctx.strokeStyle = '#1C2128';
+  //         ctx.stroke();
+  //         ctx.restore();
+  //       }
+  //     },
+  //   },
+  // ];
+
   const data = {
     labels: hours,
     datasets: [
@@ -99,9 +131,9 @@ const CurrencyGraph = () => {
         pointStyle: 'circle',
         pointRadius:1,
         pointBorderWidth:0,
-        pointBorderColor:'black',
+        // pointBorderColor:'red',
         borderWidth:2,
-        backgroundColor: 'black',
+        backgroundColor: 'purple',
         fill:true,
       },
     ]
@@ -109,7 +141,7 @@ const CurrencyGraph = () => {
 
   useEffect(() => {
     const chart = chartRef.current;
-
+    
     if (!chart) {
       return;
     }
