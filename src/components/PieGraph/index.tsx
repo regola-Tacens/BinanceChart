@@ -17,6 +17,7 @@ const PieGraph = () => {
   // list of coins to fetch :
   const currenciesToFetch = ["BTCUSDT",'AVAXUSDT','ETHUSDT','SOLUSDT']
  
+  
 
   // fetching sum of all latest trades per currency
   useEffect(()=> {
@@ -36,7 +37,7 @@ const PieGraph = () => {
 
   
 const data = {
-  labels: Object.keys(trades),
+  labels: Object.entries(trades).map(array => array[0] + ' : ' + array[1]),
   datasets: [
     {
       label: 'sum of trades',
@@ -69,11 +70,14 @@ const options = {
     },
     title: {
       display: true,
-      text: 'SUM OF TRADES',
+      text: `Trades in the last ${apiLimit/60} ${apiLimit === 60 ? 'hour' : 'hours'}`,
     },
   },
 };
-  
+
+// const tradesArray = 
+// const resultArray = Object.entries(trades).map(array => array[0] + ' : ' + array[1])
+// console.log(resultArray)
 
   return (
     <div className="pie">
