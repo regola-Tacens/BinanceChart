@@ -19,3 +19,15 @@ export async function getHistoricalSpotCandleStick(
     return Promise.reject(err)
   }
 }
+
+export async function getCurrentAveragePrice ( symbol: String) {
+  const baseUrl = 'https://api.binance.com/'
+  const endpoint = '/api/v3/avgPrice'
+
+  try {
+    const response = await axios.get(`${baseUrl}${endpoint}?symbol=${symbol}`)
+    return Promise.resolve(response.data)
+  } catch (err) {
+  return Promise.reject(err)
+  }
+}

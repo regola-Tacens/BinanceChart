@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { getHistoricalSpotCandleStick } from './api/binanceAPI';
 import CurrencyGraph from './components/CurrencyGraph';
+import PieGraph from './components/PieGraph';
 import { currencies, limit, symbol } from './state/atoms';
 
 function App() {
@@ -18,7 +19,10 @@ function App() {
   return (
     <div className="App">
       {currenciesAtoms.length > 0 &&
-      <CurrencyGraph />
+      <>
+        <CurrencyGraph />
+        <PieGraph />
+      </>
         }
     </div>
   );
