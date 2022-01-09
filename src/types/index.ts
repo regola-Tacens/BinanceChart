@@ -21,3 +21,8 @@ export type BinanceCurrency = {
   10: string,
   11: string
 }
+
+export type sumOfTrade =  {
+  [key:string]: number,
+}
+

@@ -17,12 +17,12 @@ function App() {
   },[apiLimit, apiSymbol,setCurrenciesAToms])
 
   return (
-    <div className="App">
+    <div>
       {currenciesAtoms.length > 0 &&
-      <>
+      <div className="app">
         <CurrencyGraph />
         <PieGraph />
-      </>
+      </div>
         }
     </div>
   );
