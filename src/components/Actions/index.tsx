@@ -17,12 +17,12 @@ const Actions = () => {
   return (
     <>
       <div className="btn-container">
-          <div className="btn" onClick={()=>handleHourChange(60)}>Last Hour</div>
+          <div className="btn btnLastHour" onClick={()=>handleHourChange(60)}>Last Hour</div>
           <div className="btn" onClick={()=>handleHourChange(300)}>Last 5 hours</div>
-          <div className="btn" onClick={()=>handleHourChange(600)}>Last 10 Hours</div>
+          <div className="btn btnLast10Hours" onClick={()=>handleHourChange(600)}>Last 10 Hours</div>
       </div>
       <div className="btn-container">
-          <div className="btn-container_btn" onClick={()=>handleCoinChange("BTCUSDT")}>
+          <div className="btn-container_btn bitcoinBtn" onClick={()=>handleCoinChange("BTCUSDT")}>
             <img className="currencyIcon" src="/bitcoin.svg" alt="svg button" />
           </div>
           <div className="btn-container_btn" onClick={()=>handleCoinChange('AVAXUSDT')}>

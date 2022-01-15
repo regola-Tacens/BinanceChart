@@ -10,7 +10,7 @@ function App() {
   const [ currenciesAtoms, setCurrenciesAToms] = useRecoilState(currencies)
   const apiLimit = useRecoilValue(limit)
   const apiSymbol = useRecoilValue(symbol)
-
+ 
   useEffect(()=> {
      getHistoricalSpotCandleStick(apiSymbol,'1m', apiLimit,'').then((response)=>{
       setCurrenciesAToms(response)
