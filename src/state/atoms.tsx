@@ -18,5 +18,5 @@ export const symbol = atom<Symbol>({
 
 export const darkMode = atom<DarkMode>({
   key: 'darkmode', 
-  default: false
+  default: true
 })

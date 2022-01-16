@@ -20,6 +20,10 @@ code {
   width : 70vw;
 }
 
+.graph, .pie{
+  box-shadow: 5px 5px 5px 3px rgb(0 0 0 / 0.1);
+}
+
 .graph {
   /* height: 500px; */
   box-sizing: border-box;
