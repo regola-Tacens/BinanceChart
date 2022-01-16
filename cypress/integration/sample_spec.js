@@ -87,4 +87,16 @@ describe ('the curreny object' ,() => {
   })
 })
 
+describe("dark mode", () => {
+    it("set mode to light", () => {
+      cy.get('.dark-mode-btn').click()
+      cy.get('.pie, .graph')
+       .should('have.css', 'background-color')
+       .and('eq', 'rgb(218, 218, 218)')
+      cy.get('body')
+        .should('have.css', 'background-color')
+        .and('eq', 'rgb(255, 255, 255)')
+    })
+})
+
 //
