@@ -26,3 +26,5 @@ export type sumOfTrade =  {
   [key:string]: number,
 }
 
+export type DarkMode = Boolean
+

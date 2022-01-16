@@ -2,6 +2,7 @@
 @import './styles/dark.css';
 
 body {
+  box-sizing: border-box;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,24 +16,34 @@ code {
     monospace;
 }
 .mainContainer {
-  margin: 0 auto;
-  height: 100%;
-  width : 60%;
+  margin:  1rem auto;
+  width : 70vw;
 }
 
 .graph {
+  /* height: 500px; */
+  box-sizing: border-box;
+  /* display: inline-block; */
   background-color: var(--cardBackground);
-  width:60%;
-  margin:0.5rem;
+  width: calc(60% - 5px);
+  margin-right:5px;
+  margin-top:10px;
+  padding:2rem;
 }
 
 .pie{
+  height: 100%;
+  box-sizing: border-box;
+  /* display: inline-block; */
   background-color: var(--cardBackground);
-  width:40%;
-  margin: 0.5rem;
+  width:calc(40% - 5px);
+  margin-left: 5px;
+  margin-top:10px;
+  padding: 2rem;
+  
 }
 .app {
-  margin-top:1rem;
+  /* margin-top:1rem; */
   /* width:100vw; */
   display: flex;
   justify-content: center;

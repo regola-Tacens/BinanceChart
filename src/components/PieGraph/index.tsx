@@ -77,7 +77,7 @@ const options = {
 // console.log(resultArray)
 
   return (
-    <div className="pie">
+    <div className="">
       <Pie data={data} options={options} />;
     </div>
   )

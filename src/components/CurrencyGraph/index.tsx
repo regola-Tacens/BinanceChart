@@ -158,7 +158,7 @@ const CurrencyGraph = () => {
   },[apiSymbol, currencyInfos])
 
   return (
-    <div className="graph" >  
+    <div className="" >  
     <Chart ref={chartRef} type='line' options={options} data={chartData} />
      <Actions />
     </div>

@@ -1,9 +1,10 @@
 .btn-container{
   display: flex;
+  align-items:center;
 }
 
 .btn {
-  max-width:150px;
+  width:20%;
   background-color: black;
   color: white;
   margin: 1em;
@@ -15,7 +16,8 @@
   background-color: purple;
 }
 .btn-container_btn {
-  margin: 0.5rem 1rem;
+  width:25%;
+  margin: 0.5rem 0.25rem;
   border:1px solid black;
   /* border-radius:10px; */
   padding: 0.5rem;
@@ -32,7 +34,7 @@
 }
  
 .currencyIcon {
-  height: 25px;
+  width: 100%;
   margin:0.5em;
   cursor: pointer;
 }

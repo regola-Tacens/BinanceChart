@@ -1,5 +1,17 @@
 .headerNav {
+  box-sizing: border-box;
   background-color: var(--cardBackground);
   width: 100%;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
+  padding: 2rem;
+}
+
+.dark-mode-btn {
+  display: inline-block;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.dark-mode-btn:hover {
+  color:purple
 }
