@@ -16,7 +16,7 @@ function App() {
       setCurrenciesAToms(response)
       })
   },[apiLimit, apiSymbol,setCurrenciesAToms])
-
+  console.log(currenciesAtoms)
   return (
     <div className="mainContainer">
       {currenciesAtoms.length > 0 &&

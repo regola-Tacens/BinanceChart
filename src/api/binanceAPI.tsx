@@ -1,5 +1,11 @@
 import axios from "axios";
 
+const API = axios.create({
+  baseURL: 'https://api.binance.com/',
+  timeout: 1000,
+  // headers: {'X-Custom-Header': 'foobar'}
+});
+
 export async function getHistoricalSpotCandleStick(
   symbol:string,
   interval:string,
@@ -29,5 +35,17 @@ export async function getCurrentAveragePrice ( symbol: String) {
     return Promise.resolve(response.data)
   } catch (err) {
   return Promise.reject(err)
+  }
+}
+
+export async function getSymbolsInformations (){
+  const baseUrl = 'https://api.binance.com/'
+  const endpoint = '/api/v3/exchangeInfo'
+
+  try {
+    const response = await axios.get(`${baseUrl}${endpoint}`)
+    return Promise.resolve(response.data)
+  } catch (err) {
+    return Promise.reject(err)
   }
 }

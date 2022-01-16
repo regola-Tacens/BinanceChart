@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react'
 import { useRecoilValue } from "recoil"
-import { getHistoricalSpotCandleStick } from '../../api/binanceAPI'
+import { getHistoricalSpotCandleStick, getSymbolsInformations } from '../../api/binanceAPI'
 import { limit } from "../../state/atoms"
 import { sumOfTrade } from '../../types'
 
@@ -16,8 +16,6 @@ const PieGraph = () => {
   
   // list of coins to fetch :
   const currenciesToFetch = ["BTCUSDT",'AVAXUSDT','ETHUSDT','SOLUSDT']
- 
-  
 
   // fetching sum of all latest trades per currency
   useEffect(()=> {
@@ -34,7 +32,6 @@ const PieGraph = () => {
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[apiLimit])
-
   
 const data = {
   labels: Object.entries(trades).map(array => array[0] + ' : ' + array[1]),
