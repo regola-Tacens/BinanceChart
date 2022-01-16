@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react'
 import { useRecoilValue } from "recoil"
-import { getHistoricalSpotCandleStick, getSymbolsInformations } from '../../api/binanceAPI'
+import { getHistoricalSpotCandleStick } from '../../api/binanceAPI'
 import { limit } from "../../state/atoms"
 import { sumOfTrade } from '../../types'
 

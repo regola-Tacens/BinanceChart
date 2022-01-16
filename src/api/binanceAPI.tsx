@@ -1,11 +1,5 @@
 import axios from "axios";
 
-const API = axios.create({
-  baseURL: 'https://api.binance.com/',
-  timeout: 1000,
-  // headers: {'X-Custom-Header': 'foobar'}
-});
-
 export async function getHistoricalSpotCandleStick(
   symbol:string,
   interval:string,
