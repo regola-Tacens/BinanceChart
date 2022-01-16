@@ -1,3 +1,6 @@
+@import './styles/colors.css';
+@import './styles/dark.css';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,22 +14,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* .mainContainer {
-  width : 100%;
-} */
-/* 
-.graph {
-  width:50%;
+.mainContainer {
+  margin: 0 auto;
+  height: 100%;
+  width : 60%;
 }
+
+.graph {
+  background-color: var(--cardBackground);
+  width:60%;
+  margin:0.5rem;
+}
+
 .pie{
-  width:30%
-} */
+  background-color: var(--cardBackground);
+  width:40%;
+  margin: 0.5rem;
+}
 .app {
-  /* padding : 5rem; */
-  margin-top:4rem;
-  width:100vw;
+  margin-top:1rem;
+  /* width:100vw; */
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: none;
 }

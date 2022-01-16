@@ -5,6 +5,7 @@ import CurrencyGraph from './components/CurrencyGraph';
 import PieGraph from './components/PieGraph';
 import { currencies, limit, symbol } from './state/atoms';
 import './index.css';
+import HeaderNav from './components/HeaderNav/HeaderNav';
 
 function App() {
   const [ currenciesAtoms, setCurrenciesAToms] = useRecoilState(currencies)
@@ -17,8 +18,12 @@ function App() {
       })
   },[apiLimit, apiSymbol,setCurrenciesAToms])
   console.log(currenciesAtoms)
+
+  document.body.style.backgroundColor = "#1b1b1b"
+
   return (
-    <div className="mainContainer">
+    <div className="mainContainer dark">
+      <HeaderNav />
       {currenciesAtoms.length > 0 &&
       <div className="app">
         <CurrencyGraph />
