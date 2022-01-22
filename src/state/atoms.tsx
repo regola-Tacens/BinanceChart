@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { BinanceCurrency, DarkMode, Limit, Symbol } from '../types';
+import { BinanceCurrency, DarkMode, Limit, menuItems, Symbol } from '../types';
 
 export const currencies = atom<BinanceCurrency[][]>({
   key: 'binanceCurrency',
@@ -19,4 +19,12 @@ export const symbol = atom<Symbol>({
 export const darkMode = atom<DarkMode>({
   key: 'darkmode', 
   default: true
+})
+
+export const menuItemsVisible = atom<menuItems>({
+  key:'menuItems',
+  default:{
+    pie: true, 
+    graph: true
+  }
 })

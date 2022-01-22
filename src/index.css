@@ -18,29 +18,37 @@ code {
 .mainContainer {
   margin:  1rem auto;
   width : 70vw;
+  color: var(--text);
 }
 
 .graph, .pie{
   box-shadow: 5px 5px 5px 3px rgb(0 0 0 / 0.1);
 }
-
+.leftContainer{
+  width:60%;
+}
+.rightContainer{
+  width:40%;
+}
 .graph {
   /* height: 500px; */
   box-sizing: border-box;
   /* display: inline-block; */
   background-color: var(--cardBackground);
-  width: calc(60% - 5px);
+  /* width: calc(60% - 5px); */
+  width:100%;
   margin-right:5px;
   margin-top:10px;
   padding:2rem;
 }
 
 .pie{
-  height: 100%;
+  /* height: 100%; */
   box-sizing: border-box;
   /* display: inline-block; */
   background-color: var(--cardBackground);
-  width:calc(40% - 5px);
+  /* width:calc(40% - 5px); */
+  width:100%;
   margin-left: 5px;
   margin-top:10px;
   padding: 2rem;
@@ -52,4 +60,5 @@ code {
   display: flex;
   justify-content: center;
   flex-wrap: none;
+  width:100%;
 }

@@ -34,7 +34,7 @@ const PieGraph = () => {
   },[apiLimit])
   
 const data = {
-  labels: Object.entries(trades).map(array => array[0] + ' : ' + array[1]),
+  labels: Object.entries(trades).map(array => array[0].split('USDT')[0] + ' : $' + array[1]),
   datasets: [
     {
       label: 'sum of trades',

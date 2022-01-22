@@ -7,6 +7,11 @@ export type StartTime = {
   startTime: string
 }
 
+export type menuItems = {
+  pie: boolean,
+  graph: boolean
+}
+
 export type BinanceCurrency = {
   0: number,
   1: string,
