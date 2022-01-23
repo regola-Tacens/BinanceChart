@@ -38,24 +38,23 @@ function App() {
   return (
     <div className={`mainContainer ${mode && "dark"}`}>
       <HeaderNav />
-      {JSON.stringify(menuItems)}
       {currenciesAtoms.length > 0 && (
         <div className="app">
           <div className="leftContainer">
-            <h3>Currency graph</h3>
+            <h4>Currency graph</h4>
             <div className="graph">
               <CurrencyGraph />
             </div>
           </div>
           <div className="rightContainer">
-            {menuItems.pie && (
-              <>
-                <h3>Pie graph</h3>
+            {/* {menuItems.pie && (
+              <> */}
+                <h4>Pie graph</h4>
                 <div className="pie">
                   <PieGraph />
                 </div>
-              </>
-            )}
+              {/* </>
+            )} */}
           </div>
         </div>
       )}

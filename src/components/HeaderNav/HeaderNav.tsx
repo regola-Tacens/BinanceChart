@@ -1,6 +1,8 @@
 import { useRecoilState } from 'recoil';
 import { darkMode, menuItemsVisible } from '../../state/atoms';
 import { DarkMode, menuItems } from '../../types';
+import sun from '../../assets/pictos/sun.png'
+import moon from '../../assets/pictos/moon.png'
 import './styles.css';
 
 const HeaderNav = () => {
@@ -17,8 +19,11 @@ const HeaderNav = () => {
 
   return (
     <div className='headerNav'>
-    <div className='dark-mode-btn' onClick={handleDarkMode}>{mode === true ? 'Light' : 'dark'}</div>
-    <div onClick={handleShowPie}>pie</div>
+    <switch>
+
+    </switch>
+    <img className='dark-mode-btn' onClick={handleDarkMode} src={mode === true ? moon : sun } />
+    {/* <div onClick={handleShowPie}>pie</div> */}
     </div>
     
   )
