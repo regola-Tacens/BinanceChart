@@ -18,7 +18,7 @@ function App() {
   const apiLimit = useRecoilValue(limit);
   const apiSymbol = useRecoilValue(symbol);
   const mode = useRecoilValue(darkMode);
-  const menuItems = useRecoilValue(menuItemsVisible);
+  // const menuItems = useRecoilValue(menuItemsVisible);
 
   console.log("mode: ", mode);
   useEffect(() => {

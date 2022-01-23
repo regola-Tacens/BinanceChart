@@ -13,16 +13,16 @@ const HeaderNav = () => {
     setMode(!mode)
   }
 
-  const handleShowPie = () => {
-    setMenuItems({...menuItems, pie: !menuItems.pie})
-  }
+  // const handleShowPie = () => {
+  //   setMenuItems({...menuItems, pie: !menuItems.pie})
+  // }
 
   return (
     <div className='headerNav'>
     <switch>
 
     </switch>
-    <img className='dark-mode-btn' onClick={handleDarkMode} src={mode === true ? moon : sun } />
+    <img className='dark-mode-btn' onClick={handleDarkMode} alt="darkmode" src={mode === true ? moon : sun } />
     {/* <div onClick={handleShowPie}>pie</div> */}
     </div>
     
