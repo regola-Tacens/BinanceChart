@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRecoilState } from 'recoil';
 import { darkMode, menuItemsVisible } from '../../state/atoms';
 import { DarkMode, menuItems } from '../../types';
@@ -7,7 +8,7 @@ import './styles.css';
 
 const HeaderNav = () => {
   const [mode, setMode] = useRecoilState<DarkMode>(darkMode)
-  const [menuItems, setMenuItems] = useRecoilState<menuItems>(menuItemsVisible)
+  // const [menuItems, setMenuItems] = useRecoilState<menuItems>(menuItemsVisible)
 
   const handleDarkMode = () => {
     setMode(!mode)

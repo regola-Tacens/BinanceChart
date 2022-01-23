@@ -7,7 +7,7 @@ import {
   currencies,
   darkMode,
   limit,
-  menuItemsVisible,
+  // menuItemsVisible,
   symbol,
 } from "./state/atoms";
 import "./index.css";
